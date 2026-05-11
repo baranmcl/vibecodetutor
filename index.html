@@ -109,13 +109,87 @@
       background: var(--color-primary);
       color: white;
     }
+
+    .progress-sticky {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(250, 251, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .progress-sticky-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 10px var(--space-5);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-size: 13px;
+      color: var(--color-text-muted);
+    }
+    .progress-bar {
+      flex: 1;
+      height: 6px;
+      background: var(--color-primary-soft);
+      border-radius: var(--radius-pill);
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: var(--color-primary);
+      border-radius: var(--radius-pill);
+      width: 0%;
+      transition: width 240ms ease;
+    }
+
+    .prereq {
+      background: var(--color-warning-soft);
+      border: 1px solid #fde68a;
+      border-radius: var(--radius-md);
+      padding: var(--space-5);
+      margin: var(--space-6) 0;
+    }
+    .prereq h2 {
+      margin: 0 0 var(--space-2);
+      font-size: 18px;
+      color: #92400e;
+    }
+    .prereq ul {
+      list-style: none;
+      padding: 0;
+      margin: var(--space-3) 0 0;
+      display: grid;
+      gap: var(--space-2);
+    }
+    .prereq label {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      cursor: pointer;
+      font-size: 15px;
+    }
+    .task-check {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--color-primary);
+      flex-shrink: 0;
+    }
   </style>
 </head>
 <body>
+  <div class="progress-sticky" id="overall-progress" aria-label="Overall progress">
+    <div class="progress-sticky-inner">
+      <span id="overall-progress-label">0% complete</span>
+      <div class="progress-bar"><div class="progress-bar-fill" id="overall-progress-fill"></div></div>
+    </div>
+  </div>
+
   <header class="page-header">
     <h1>vibecodetutor</h1>
     <p class="lede">A friendly, step-by-step guide to setting up Claude Code — even if you've never coded before.</p>
   </header>
+
   <main class="container">
     <div class="platform-toggle-wrap">
       <div class="platform-toggle" role="tablist" aria-label="Operating system">
@@ -124,11 +198,18 @@
       </div>
     </div>
 
-    <p style="margin: 24px 0; text-align: center;">
-      Showing instructions for:
-      <strong data-platform="win">Windows</strong>
-      <strong data-platform="mac">Mac</strong>
-    </p>
+    <section class="prereq">
+      <h2>Before you start</h2>
+      <p style="margin: 0; color: #92400e; font-size: 14px;">You'll need these four things. Check them off as you go — your progress is saved automatically.</p>
+      <ul>
+        <li><label><input type="checkbox" class="task-check" data-id="prereq-computer"> A computer (running <strong data-platform="win">Windows 10 or newer</strong><strong data-platform="mac">macOS Big Sur or newer</strong>)</label></li>
+        <li><label><input type="checkbox" class="task-check" data-id="prereq-internet"> A working internet connection</label></li>
+        <li><label><input type="checkbox" class="task-check" data-id="prereq-time"> About 30 minutes</label></li>
+        <li><label><input type="checkbox" class="task-check" data-id="prereq-card"> A credit or debit card (Claude requires a paid plan — we'll cover costs below)</label></li>
+      </ul>
+    </section>
+
+    <!-- numbered sections will land here in Task 6+ -->
   </main>
   <script>
     const STATE_KEY = "vibecodetutor:v1";
@@ -162,7 +243,14 @@
     }
 
     function updateProgress() {
-      // overall + per-section progress bars are wired in later tasks
+      const all = document.querySelectorAll("input.task-check");
+      const done = document.querySelectorAll("input.task-check:checked");
+      const pct = all.length === 0 ? 0 : Math.round((done.length / all.length) * 100);
+      const fill = document.getElementById("overall-progress-fill");
+      const label = document.getElementById("overall-progress-label");
+      if (fill) fill.style.width = pct + "%";
+      if (label) label.textContent = pct + "% complete";
+      // section-level progress wired in Task 6
     }
 
     function applyPlatform(platform) {
