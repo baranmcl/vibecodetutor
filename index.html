@@ -82,7 +82,7 @@
       margin: 0 auto;
     }
 
-    [data-platform="mac"] { display: none; }
+    [data-platform="mac"]:not(.platform-btn) { display: none; }
 
     .platform-toggle {
       display: inline-flex;
@@ -1001,7 +1001,7 @@ git push        # Send the snapshot to GitHub</code></pre>
     }
 
     function applyPlatform(platform) {
-      document.querySelectorAll("[data-platform]").forEach(el => {
+      document.querySelectorAll("[data-platform]:not(.platform-btn)").forEach(el => {
         el.style.display = (el.dataset.platform === platform) ? "" : "none";
       });
       document.querySelectorAll(".platform-text").forEach(el => {
