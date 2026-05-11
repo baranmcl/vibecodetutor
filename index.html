@@ -89,7 +89,124 @@
     <p class="lede">A friendly, step-by-step guide to setting up Claude Code — even if you've never coded before.</p>
   </header>
   <main class="container">
-    <!-- sections will land here in later tasks -->
+    <p style="margin: 24px 0;">
+      <label>
+        <input type="checkbox" class="task-check" data-id="test-persistence">
+        Test checkbox (will be removed in Task 4)
+      </label>
+    </p>
   </main>
+  <script>
+    const STATE_KEY = "vibecodetutor:v1";
+    const PLATFORM_KEY = "vibecodetutor:platform";
+
+    function loadState() {
+      try {
+        return JSON.parse(localStorage.getItem(STATE_KEY)) || {};
+      } catch {
+        return {};
+      }
+    }
+
+    function saveState(state) {
+      localStorage.setItem(STATE_KEY, JSON.stringify(state));
+    }
+
+    function wireCheckboxes() {
+      const state = loadState();
+      document.querySelectorAll("input.task-check[data-id]").forEach(box => {
+        const id = box.dataset.id;
+        box.checked = !!state[id];
+        box.addEventListener("change", () => {
+          const s = loadState();
+          if (box.checked) s[id] = true;
+          else delete s[id];
+          saveState(s);
+          updateProgress();
+        });
+      });
+    }
+
+    function updateProgress() {
+      // overall + per-section progress bars are wired in later tasks
+    }
+
+    function applyPlatform(platform) {
+      document.querySelectorAll("[data-platform]").forEach(el => {
+        el.style.display = (el.dataset.platform === platform) ? "" : "none";
+      });
+      document.querySelectorAll(".platform-text").forEach(el => {
+        el.textContent = (platform === "mac") ? el.dataset.mac : el.dataset.win;
+      });
+    }
+
+    function wirePlatformToggle() {
+      let platform = localStorage.getItem(PLATFORM_KEY);
+      if (!platform) {
+        const p = (navigator.platform || "").toLowerCase();
+        platform = p.includes("mac") ? "mac" : "win";
+      }
+      applyPlatform(platform);
+      document.querySelectorAll(".platform-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          platform = btn.dataset.platform;
+          localStorage.setItem(PLATFORM_KEY, platform);
+          document.querySelectorAll(".platform-btn").forEach(b => {
+            b.classList.toggle("is-active", b.dataset.platform === platform);
+          });
+          applyPlatform(platform);
+        });
+      });
+      document.querySelectorAll(".platform-btn").forEach(b => {
+        b.classList.toggle("is-active", b.dataset.platform === platform);
+      });
+    }
+
+    function wireCopyButtons() {
+      document.querySelectorAll(".code-block").forEach(block => {
+        const btn = block.querySelector(".copy-btn");
+        const code = block.querySelector("pre code") || block.querySelector("pre");
+        if (!btn || !code) return;
+        btn.addEventListener("click", async () => {
+          const text = code.innerText;
+          try {
+            await navigator.clipboard.writeText(text);
+            btn.textContent = "Copied!";
+            btn.classList.add("is-copied");
+          } catch {
+            const range = document.createRange();
+            range.selectNode(code);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            btn.textContent = "Press Ctrl/⌘+C";
+          }
+          setTimeout(() => {
+            btn.textContent = "Copy";
+            btn.classList.remove("is-copied");
+          }, 1200);
+        });
+      });
+    }
+
+    function wireResetButton() {
+      const btn = document.getElementById("reset-progress");
+      if (!btn) return;
+      btn.addEventListener("click", e => {
+        e.preventDefault();
+        if (!confirm("Reset all checklist progress? This can't be undone.")) return;
+        localStorage.removeItem(STATE_KEY);
+        document.querySelectorAll("input.task-check").forEach(b => { b.checked = false; });
+        updateProgress();
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      wirePlatformToggle();
+      wireCheckboxes();
+      wireCopyButtons();
+      wireResetButton();
+      updateProgress();
+    });
+  </script>
 </body>
 </html>
