@@ -730,12 +730,21 @@
         <div class="step-badge">3</div>
         <div class="step-body">
           <h3>Install gstack (by Garry Tan)</h3>
-          <p>This adds testing, deployment, and design-review skills — handy when you want Claude to actually try the website it just built. Run this one command in <strong>Terminal</strong> (Mac) or <strong>PowerShell</strong> (Windows):</p>
-          <div class="code-block">
-            <pre><code>git clone --single-branch --depth 1 https://github.com/garrytan/gstack.git ~/.claude/skills/gstack && cd ~/.claude/skills/gstack && ./setup</code></pre>
-            <button class="copy-btn">Copy</button>
+          <p>This adds testing, deployment, and design-review skills — handy when you want Claude to actually try the website it just built.</p>
+          <div data-platform="win">
+            <p>On Windows, run this in <strong>Git Bash</strong> (it was installed when you installed Git). Find it by pressing the Windows key, typing "Git Bash", and pressing Enter. Then paste:</p>
+            <div class="code-block">
+              <pre><code>git clone --single-branch --depth 1 https://github.com/garrytan/gstack.git ~/.claude/skills/gstack && cd ~/.claude/skills/gstack && ./setup</code></pre>
+              <button class="copy-btn">Copy</button>
+            </div>
           </div>
-          <p>After it finishes, reload Claude Code (Ctrl/⌘+Shift+P → "Reload Window") and the gstack skills will be available.</p>
+          <div data-platform="mac">
+            <p>On Mac, run this in <strong>Terminal</strong> (Cmd+Space, type "Terminal", press Enter). Paste:</p>
+            <div class="code-block">
+              <pre><code>git clone --single-branch --depth 1 https://github.com/garrytan/gstack.git ~/.claude/skills/gstack && cd ~/.claude/skills/gstack && ./setup</code></pre>
+              <button class="copy-btn">Copy</button>
+            </div>
+          </div>
           <label class="step-check"><input type="checkbox" class="task-check" data-id="skills-gstack"> gstack installed</label>
         </div>
       </div>
