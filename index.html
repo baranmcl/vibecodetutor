@@ -429,6 +429,43 @@
       padding: 0;
       text-decoration: underline;
     }
+    .toc {
+      display: none;
+    }
+    @media (min-width: 980px) {
+      .toc {
+        display: block;
+        position: fixed;
+        top: 80px;
+        right: max(20px, calc((100vw - 760px) / 2 - 220px));
+        width: 200px;
+        font-size: 13px;
+      }
+      .toc h4 {
+        margin: 0 0 var(--space-2);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--color-text-faint);
+      }
+      .toc ul { list-style: none; padding: 0; margin: 0; }
+      .toc li { margin: 0; }
+      .toc a {
+        display: block;
+        padding: 6px 10px;
+        color: var(--color-text-muted);
+        text-decoration: none;
+        border-radius: var(--radius-sm);
+        border-left: 2px solid transparent;
+      }
+      .toc a:hover { background: var(--color-primary-soft); color: var(--color-primary-dark); }
+      .toc a.is-active {
+        background: var(--color-primary-soft);
+        color: var(--color-primary-dark);
+        border-left-color: var(--color-primary);
+        font-weight: 600;
+      }
+    }
   </style>
 </head>
 <body>
@@ -443,6 +480,17 @@
     <h1>vibecodetutor</h1>
     <p class="lede">A friendly, step-by-step guide to setting up Claude Code — even if you've never coded before.</p>
   </header>
+
+  <nav class="toc" aria-label="Sections">
+    <h4>Contents</h4>
+    <ul>
+      <li><a href="#section-accounts">1. Accounts</a></li>
+      <li><a href="#section-install">2. Install</a></li>
+      <li><a href="#section-skills">3. Skills</a></li>
+      <li><a href="#section-use-well">4. Use well</a></li>
+      <li><a href="#section-projects">5. Projects</a></li>
+    </ul>
+  </nav>
 
   <main class="container">
     <div class="platform-toggle-wrap">
@@ -977,11 +1025,29 @@ git push        # Send the snapshot to GitHub</code></pre>
       });
     }
 
+    function wireScrollspy() {
+      const sections = document.querySelectorAll(".section[id]");
+      const links = document.querySelectorAll(".toc a");
+      if (sections.length === 0 || links.length === 0) return;
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            links.forEach(a => {
+              a.classList.toggle("is-active", a.getAttribute("href") === "#" + id);
+            });
+          }
+        });
+      }, { rootMargin: "-30% 0px -60% 0px" });
+      sections.forEach(s => observer.observe(s));
+    }
+
     document.addEventListener("DOMContentLoaded", () => {
       wirePlatformToggle();
       wireCheckboxes();
       wireCopyButtons();
       wireResetButton();
+      wireScrollspy();
       updateProgress();
     });
   </script>
