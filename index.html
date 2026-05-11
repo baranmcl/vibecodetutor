@@ -550,7 +550,7 @@
           <p>Claude Code needs a paid plan. There are two ways to pay:</p>
           <p><strong>Claude Pro / Max subscription</strong> (recommended for most beginners) — a flat monthly fee, with a generous usage limit that resets every few hours. Predictable cost.</p>
           <p><strong>API pay-as-you-go</strong> — you load credit and pay per use. Cheaper if you only use Claude occasionally, but harder to predict.</p>
-          <div class="callout callout-cost"><strong>💰 What to expect:</strong> Plan prices are shown on the Anthropic site when you sign up. Most beginners start with the lower subscription tier and upgrade only if they hit the limits. <em>(Exact prices verified at implementation time — see Task 13.)</em></div>
+          <div class="callout callout-cost"><strong>💰 What to expect:</strong> Claude Pro is $20/month and works well for most beginners. Claude Max is $100/month (5× Pro usage) or $200/month (20× usage) for heavier users. API pay-as-you-go lets you load credits and pay per use — good if you only use Claude occasionally. Most people start with Pro and upgrade only if they hit the limits.</div>
           <p>Add a payment method, choose your plan, and confirm.</p>
           <label class="step-check"><input type="checkbox" class="task-check" data-id="accounts-plan"> I picked a plan and added payment</label>
         </div>
@@ -589,21 +589,30 @@
           <h3>Install Claude Code</h3>
           <p>Claude Code is the actual AI assistant that runs inside VSCode. It can read your files, write code, and run commands for you.</p>
           <div data-platform="win">
-            <p>Claude Code on Windows needs <strong>Node.js</strong> first (a tool that lets other programs run). Download and install it from <a href="https://nodejs.org/" target="_blank" rel="noopener">nodejs.org</a> — pick the "LTS" version, run the installer, accept defaults.</p>
-            <p>Then open <strong>PowerShell</strong> (press the Windows key, type "PowerShell", press Enter) and paste this command:</p>
+            <p>Open <strong>PowerShell</strong> (press the Windows key, type "PowerShell", press Enter) and paste this command:</p>
             <div class="code-block">
-              <pre><code>npm install -g @anthropic-ai/claude-code</code></pre>
+              <pre><code>irm https://claude.ai/install.ps1 | iex</code></pre>
               <button class="copy-btn">Copy</button>
             </div>
-            <p>Press Enter. Wait for it to finish (usually under a minute). <em>(Exact install command verified at implementation time — see Task 13.)</em></p>
+            <p>Press Enter. Wait for it to finish (usually under a minute). The installer handles everything automatically and keeps Claude Code updated in the background.</p>
+            <p>If you prefer <strong>Windows CMD</strong> (Command Prompt) instead of PowerShell:</p>
+            <div class="code-block">
+              <pre><code>curl -fsSL https://claude.ai/install.cmd -o install.cmd && install.cmd && del install.cmd</code></pre>
+              <button class="copy-btn">Copy</button>
+            </div>
           </div>
           <div data-platform="mac">
             <p>Open <strong>Terminal</strong> (press Cmd+Space, type "Terminal", press Enter). Paste this command:</p>
             <div class="code-block">
-              <pre><code>npm install -g @anthropic-ai/claude-code</code></pre>
+              <pre><code>curl -fsSL https://claude.ai/install.sh | bash</code></pre>
               <button class="copy-btn">Copy</button>
             </div>
-            <p>If your Mac says "command not found: npm", you need Node.js first. Install it from <a href="https://nodejs.org/" target="_blank" rel="noopener">nodejs.org</a> (pick the "LTS" version), then try the command again. <em>(Exact install command verified at implementation time — see Task 13.)</em></p>
+            <p>The installer handles everything automatically and keeps Claude Code updated in the background.</p>
+            <p>Prefer <strong>Homebrew</strong>? Run this instead (does not auto-update — run <code>brew upgrade claude-code</code> periodically):</p>
+            <div class="code-block">
+              <pre><code>brew install --cask claude-code</code></pre>
+              <button class="copy-btn">Copy</button>
+            </div>
           </div>
           <label class="step-check"><input type="checkbox" class="task-check" data-id="install-claude-code"> Claude Code is installed</label>
         </div>
@@ -675,7 +684,6 @@
             <pre><code>/plugin install superpowers@superpowers-marketplace</code></pre>
             <button class="copy-btn">Copy</button>
           </div>
-          <p><em>(Exact commands verified at implementation time — see Task 13.)</em></p>
           <label class="step-check"><input type="checkbox" class="task-check" data-id="skills-superpowers"> superpowers installed</label>
         </div>
       </div>
@@ -684,16 +692,12 @@
         <div class="step-badge">3</div>
         <div class="step-body">
           <h3>Install gstack (by Garry Tan)</h3>
-          <p>This adds testing, deployment, and design-review skills — handy when you want Claude to actually try the website it just built. Paste these in the Claude Code panel:</p>
+          <p>This adds testing, deployment, and design-review skills — handy when you want Claude to actually try the website it just built. Run this one command in <strong>Terminal</strong> (Mac) or <strong>PowerShell</strong> (Windows):</p>
           <div class="code-block">
-            <pre><code>/plugin marketplace add garrytan/gstack</code></pre>
+            <pre><code>git clone --single-branch --depth 1 https://github.com/garrytan/gstack.git ~/.claude/skills/gstack && cd ~/.claude/skills/gstack && ./setup</code></pre>
             <button class="copy-btn">Copy</button>
           </div>
-          <div class="code-block">
-            <pre><code>/plugin install gstack@gstack</code></pre>
-            <button class="copy-btn">Copy</button>
-          </div>
-          <p><em>(Exact commands verified at implementation time — see Task 13.)</em></p>
+          <p>After it finishes, reload Claude Code (Ctrl/⌘+Shift+P → "Reload Window") and the gstack skills will be available.</p>
           <label class="step-check"><input type="checkbox" class="task-check" data-id="skills-gstack"> gstack installed</label>
         </div>
       </div>
