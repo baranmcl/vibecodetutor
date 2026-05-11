@@ -503,6 +503,76 @@
         </div>
       </div>
     </section>
+
+    <section class="section" id="section-skills" data-section="skills">
+      <div class="section-header">
+        <div class="section-num">3</div>
+        <div class="section-title-wrap">
+          <h2>Add superpowers <span class="check-done">✓</span></h2>
+          <div class="section-meta">About 5 minutes</div>
+          <div class="progress-bar"><div class="progress-bar-fill section-progress-fill"></div></div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-badge">1</div>
+        <div class="step-body">
+          <h3>What are "skills"?</h3>
+          <p>Skills are <strong>expansion packs for Claude</strong>. Each one teaches Claude a new way of working — like how to brainstorm before coding, or how to use a real browser to test a website.</p>
+          <p>You'll install two skill packs now. Both are free.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-badge">2</div>
+        <div class="step-body">
+          <h3>Install superpowers (by Jesse Vincent / "obra")</h3>
+          <p>This adds careful planning, debugging, and code review skills. In the Claude Code panel, paste each of these one at a time:</p>
+          <div class="code-block">
+            <pre><code>/plugin marketplace add obra/superpowers-marketplace</code></pre>
+            <button class="copy-btn">Copy</button>
+          </div>
+          <div class="code-block">
+            <pre><code>/plugin install superpowers@superpowers-marketplace</code></pre>
+            <button class="copy-btn">Copy</button>
+          </div>
+          <p><em>(Exact commands verified at implementation time — see Task 13.)</em></p>
+          <label class="step-check"><input type="checkbox" class="task-check" data-id="skills-superpowers"> superpowers installed</label>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-badge">3</div>
+        <div class="step-body">
+          <h3>Install gstack (by Garry Tan)</h3>
+          <p>This adds testing, deployment, and design-review skills — handy when you want Claude to actually try the website it just built. Paste these in the Claude Code panel:</p>
+          <div class="code-block">
+            <pre><code>/plugin marketplace add garrytan/gstack</code></pre>
+            <button class="copy-btn">Copy</button>
+          </div>
+          <div class="code-block">
+            <pre><code>/plugin install gstack@gstack</code></pre>
+            <button class="copy-btn">Copy</button>
+          </div>
+          <p><em>(Exact commands verified at implementation time — see Task 13.)</em></p>
+          <label class="step-check"><input type="checkbox" class="task-check" data-id="skills-gstack"> gstack installed</label>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-badge">4</div>
+        <div class="step-body">
+          <h3>Try one</h3>
+          <p>In the Claude Code panel, type:</p>
+          <div class="code-block">
+            <pre><code>/brainstorm I want to build a small website about my favorite hobby</code></pre>
+            <button class="copy-btn">Copy</button>
+          </div>
+          <p>Claude should now walk you through a structured brainstorming conversation before writing any code. That's superpowers in action.</p>
+          <label class="step-check"><input type="checkbox" class="task-check" data-id="skills-tried"> I tried a skill</label>
+        </div>
+      </div>
+    </section>
   </main>
   <script>
     const STATE_KEY = "vibecodetutor:v1";
