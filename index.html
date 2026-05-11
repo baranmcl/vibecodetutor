@@ -466,6 +466,24 @@
         font-weight: 600;
       }
     }
+    .screenshot {
+      margin: var(--space-3) 0;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+    .screenshot img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .screenshot-caption {
+      padding: var(--space-2) var(--space-3);
+      background: var(--color-bg);
+      font-size: 12px;
+      color: var(--color-text-muted);
+      border-top: 1px solid var(--color-border);
+    }
   </style>
 </head>
 <body>
@@ -579,6 +597,10 @@
           <div data-platform="mac">
             <p>Click the big blue "Download Mac Universal" button. Once the .zip finishes downloading, double-click it to unzip. Drag the <em>Visual Studio Code</em> icon into your Applications folder.</p>
           </div>
+          <figure class="screenshot">
+            <img src="assets/screenshots/vscode-download.webp" alt="The VSCode download page with the blue download button highlighted." loading="lazy">
+            <figcaption class="screenshot-caption">Click the big blue download button.</figcaption>
+          </figure>
           <label class="step-check"><input type="checkbox" class="task-check" data-id="install-vscode"> VSCode is installed and I can open it</label>
         </div>
       </div>
@@ -624,6 +646,10 @@
           <h3>Install the Claude Code VSCode extension</h3>
           <p>This is the panel inside VSCode where you'll actually chat with Claude.</p>
           <p>Open VSCode. On the left sidebar, click the <strong>Extensions</strong> icon (it looks like four squares). In the search box, type <em>Claude Code</em>. Find the one published by Anthropic and click <strong>Install</strong>.</p>
+          <figure class="screenshot">
+            <img src="assets/screenshots/vscode-extensions.webp" alt="VSCode Extensions panel with Claude Code search results visible." loading="lazy">
+            <figcaption class="screenshot-caption">The Extensions panel — search for "Claude Code".</figcaption>
+          </figure>
           <label class="step-check"><input type="checkbox" class="task-check" data-id="install-extension"> Extension installed</label>
         </div>
       </div>
@@ -633,6 +659,10 @@
         <div class="step-body">
           <h3>Sign in</h3>
           <p>After install, you'll see a Claude icon on the left sidebar — click it to open the Claude Code panel. The panel will prompt you to sign in. Click <strong>Sign in</strong>; a browser tab opens; sign in with your Anthropic account; the tab closes and the panel says you're connected.</p>
+          <figure class="screenshot">
+            <img src="assets/screenshots/first-auth.webp" alt="The first-time Claude Code sign-in screen in a browser tab." loading="lazy">
+            <figcaption class="screenshot-caption">The sign-in tab that opens automatically.</figcaption>
+          </figure>
           <label class="step-check"><input type="checkbox" class="task-check" data-id="install-signin"> I'm signed in</label>
         </div>
       </div>
@@ -647,6 +677,10 @@
             <button class="copy-btn">Copy</button>
           </div>
           <p>You should see Claude reply within a few seconds. Congrats — you're set up.</p>
+          <figure class="screenshot">
+            <img src="assets/screenshots/claude-code-panel.webp" alt="The Claude Code panel open inside VSCode with a sample conversation visible." loading="lazy">
+            <figcaption class="screenshot-caption">Success looks like this — Claude Code panel open and replying.</figcaption>
+          </figure>
           <label class="step-check"><input type="checkbox" class="task-check" data-id="install-hello"> Claude said hi back</label>
         </div>
       </div>
@@ -684,6 +718,10 @@
             <pre><code>/plugin install superpowers@superpowers-marketplace</code></pre>
             <button class="copy-btn">Copy</button>
           </div>
+          <figure class="screenshot">
+            <img src="assets/screenshots/plugin-install.webp" alt="The Claude Code panel showing the /plugin install command autocomplete." loading="lazy">
+            <figcaption class="screenshot-caption">Paste each slash command into the Claude Code panel.</figcaption>
+          </figure>
           <label class="step-check"><input type="checkbox" class="task-check" data-id="skills-superpowers"> superpowers installed</label>
         </div>
       </div>
