@@ -1,8 +1,8 @@
 # vibecodetutor
 
-A friendly, step-by-step guide to setting up Claude Code — even if you've never coded before.
+**👉 Live site: [baranmcl.github.io/vibecodetutor](https://baranmcl.github.io/vibecodetutor/)**
 
-**Live site:** https://baranmcl.github.io/vibecodetutor/
+A friendly, step-by-step guide to setting up Claude Code — even if you've never coded before.
 
 ## What this is
 
