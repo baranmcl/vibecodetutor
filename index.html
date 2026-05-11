@@ -175,6 +175,131 @@
       accent-color: var(--color-primary);
       flex-shrink: 0;
     }
+
+    .section {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-6);
+      margin: var(--space-6) 0;
+      box-shadow: var(--shadow-card);
+    }
+    .section-header {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-4);
+      margin-bottom: var(--space-4);
+    }
+    .section-num {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      background: var(--color-primary);
+      color: white;
+      border-radius: var(--radius-md);
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      letter-spacing: -1px;
+    }
+    .section-title-wrap { flex: 1; }
+    .section h2 {
+      margin: 0 0 4px;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section h2 .check-done {
+      color: var(--color-success);
+      font-size: 18px;
+      opacity: 0;
+      transition: opacity 200ms;
+    }
+    .section.is-complete h2 .check-done { opacity: 1; }
+    .section .section-meta {
+      font-size: 13px;
+      color: var(--color-text-faint);
+    }
+    .section .progress-bar {
+      margin-top: var(--space-3);
+    }
+
+    .step {
+      display: flex;
+      gap: var(--space-4);
+      padding: var(--space-4) 0;
+      border-top: 1px solid var(--color-border);
+    }
+    .step:first-of-type { border-top: none; padding-top: var(--space-3); }
+    .step-badge {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      background: var(--color-primary-soft);
+      color: var(--color-primary-dark);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .step-body { flex: 1; }
+    .step-body h3 {
+      margin: 0 0 var(--space-2);
+      font-size: 17px;
+      font-weight: 600;
+    }
+    .step-body p { margin: 0 0 var(--space-3); color: var(--color-text-muted); }
+    .step-body p:last-child { margin-bottom: 0; }
+    .step-body a { color: var(--color-primary-dark); }
+
+    .callout {
+      background: var(--color-primary-soft);
+      border-left: 3px solid var(--color-primary);
+      padding: var(--space-3) var(--space-4);
+      border-radius: var(--radius-sm);
+      margin: var(--space-3) 0;
+      font-size: 14px;
+    }
+    .callout.callout-cost {
+      background: var(--color-warning-soft);
+      border-left-color: var(--color-warning);
+    }
+    .callout strong { color: var(--color-text); }
+
+    .step-check {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-top: var(--space-3);
+      padding: var(--space-3);
+      background: var(--color-primary-soft);
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .step-check input { margin: 0; }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--color-primary);
+      color: white;
+      padding: 10px 20px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: background 120ms;
+    }
+    .btn-primary:hover { background: var(--color-primary-dark); }
   </style>
 </head>
 <body>
@@ -209,7 +334,51 @@
       </ul>
     </section>
 
-    <!-- numbered sections will land here in Task 6+ -->
+    <section class="section" id="section-accounts" data-section="accounts">
+      <div class="section-header">
+        <div class="section-num">1</div>
+        <div class="section-title-wrap">
+          <h2>Set up your accounts <span class="check-done">✓</span></h2>
+          <div class="section-meta">About 10 minutes</div>
+          <div class="progress-bar"><div class="progress-bar-fill section-progress-fill"></div></div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-badge">1</div>
+        <div class="step-body">
+          <h3>Make a GitHub account</h3>
+          <p>Think of GitHub like <strong>Dropbox for code</strong> — a place online where your projects live so you don't lose them, and so you can share them.</p>
+          <p><a href="https://github.com/signup" target="_blank" rel="noopener" class="btn-primary">Open github.com/signup →</a></p>
+          <p>Pick a username (this will be public — many people use a version of their real name), enter your email, and choose a password. GitHub will email you a code to verify your address.</p>
+          <label class="step-check"><input type="checkbox" class="task-check" data-id="accounts-github"> I created my GitHub account and verified my email</label>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-badge">2</div>
+        <div class="step-body">
+          <h3>Make a Claude account</h3>
+          <p>Claude is the AI you'll be talking to. <strong>Anthropic</strong> is the company that makes Claude.</p>
+          <p><a href="https://console.anthropic.com/" target="_blank" rel="noopener" class="btn-primary">Open console.anthropic.com →</a></p>
+          <p>Sign up using your email or Google account. You'll get a verification email — click the link to confirm.</p>
+          <label class="step-check"><input type="checkbox" class="task-check" data-id="accounts-anthropic"> I created my Anthropic account</label>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-badge">3</div>
+        <div class="step-body">
+          <h3>Pick a plan and add payment</h3>
+          <p>Claude Code needs a paid plan. There are two ways to pay:</p>
+          <p><strong>Claude Pro / Max subscription</strong> (recommended for most beginners) — a flat monthly fee, with a generous usage limit that resets every few hours. Predictable cost.</p>
+          <p><strong>API pay-as-you-go</strong> — you load credit and pay per use. Cheaper if you only use Claude occasionally, but harder to predict.</p>
+          <div class="callout callout-cost"><strong>💰 What to expect:</strong> Plan prices are shown on the Anthropic site when you sign up. Most beginners start with the lower subscription tier and upgrade only if they hit the limits. <em>(Exact prices verified at implementation time — see Task 13.)</em></div>
+          <p>Add a payment method, choose your plan, and confirm.</p>
+          <label class="step-check"><input type="checkbox" class="task-check" data-id="accounts-plan"> I picked a plan and added payment</label>
+        </div>
+      </div>
+    </section>
   </main>
   <script>
     const STATE_KEY = "vibecodetutor:v1";
@@ -250,7 +419,15 @@
       const label = document.getElementById("overall-progress-label");
       if (fill) fill.style.width = pct + "%";
       if (label) label.textContent = pct + "% complete";
-      // section-level progress wired in Task 6
+
+      document.querySelectorAll(".section[data-section]").forEach(section => {
+        const sAll = section.querySelectorAll("input.task-check");
+        const sDone = section.querySelectorAll("input.task-check:checked");
+        const sPct = sAll.length === 0 ? 0 : Math.round((sDone.length / sAll.length) * 100);
+        const sFill = section.querySelector(".section-progress-fill");
+        if (sFill) sFill.style.width = sPct + "%";
+        section.classList.toggle("is-complete", sPct === 100 && sAll.length > 0);
+      });
     }
 
     function applyPlatform(platform) {
