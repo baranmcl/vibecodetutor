@@ -363,6 +363,35 @@
       font-weight: 700;
       margin-right: 8px;
     }
+    .projects {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+      margin-top: var(--space-4);
+    }
+    @media (min-width: 600px) {
+      .projects { grid-template-columns: 1fr 1fr; }
+    }
+    .project-card {
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      padding: var(--space-4);
+      background: var(--color-bg);
+    }
+    .project-card h4 {
+      margin: 0 0 var(--space-2);
+      font-size: 16px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .project-card .emoji { font-size: 20px; }
+    .project-card p {
+      margin: 0 0 var(--space-3);
+      font-size: 14px;
+      color: var(--color-text-muted);
+    }
   </style>
 </head>
 <body>
@@ -689,6 +718,59 @@ git push        # Send the snapshot to GitHub</code></pre>
           <label class="step-check"><input type="checkbox" class="task-check" data-id="well-git"> Got it</label>
         </div>
       </div>
+    </section>
+
+    <section class="section" id="section-projects" data-section="projects">
+      <div class="section-header">
+        <div class="section-num">5</div>
+        <div class="section-title-wrap">
+          <h2>Try your first project <span class="check-done">✓</span></h2>
+          <div class="section-meta">About 5 minutes to kick one off</div>
+          <div class="progress-bar"><div class="progress-bar-fill section-progress-fill"></div></div>
+        </div>
+      </div>
+
+      <p style="color: var(--color-text-muted); margin-top: 0;">Pick one and paste the prompt into Claude Code. Each takes 5–20 minutes for Claude to do — you mostly just watch and answer the occasional question.</p>
+
+      <div class="projects">
+        <div class="project-card">
+          <h4><span class="emoji">🌐</span> A personal website</h4>
+          <p>One-page site about you. Deployed to the internet, free.</p>
+          <div class="code-block">
+            <pre><code>Build me a one-page personal website about me. Include my name, a short bio, and a way to contact me. Deploy it to GitHub Pages.</code></pre>
+            <button class="copy-btn">Copy</button>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <h4><span class="emoji">🐍</span> A Python tool</h4>
+          <p>A small script that does a useful thing.</p>
+          <div class="code-block">
+            <pre><code>Write a Python script that organizes the files in my Downloads folder by file type (PDFs in one folder, images in another, etc.).</code></pre>
+            <button class="copy-btn">Copy</button>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <h4><span class="emoji">📊</span> A PowerPoint deck</h4>
+          <p>Yes — Claude can generate real .pptx files.</p>
+          <div class="code-block">
+            <pre><code>Make a 5-slide PowerPoint introducing me to my new team. Use a clean modern design.</code></pre>
+            <button class="copy-btn">Copy</button>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <h4><span class="emoji">📈</span> An Excel spreadsheet</h4>
+          <p>A working .xlsx with formulas you can edit.</p>
+          <div class="code-block">
+            <pre><code>Build a monthly budget spreadsheet with categories for rent, food, transportation, and savings. Include formulas that show how much I have left.</code></pre>
+            <button class="copy-btn">Copy</button>
+          </div>
+        </div>
+      </div>
+
+      <label class="step-check" style="margin-top: var(--space-4);"><input type="checkbox" class="task-check" data-id="projects-tried"> I kicked off my first project</label>
     </section>
   </main>
   <script>
