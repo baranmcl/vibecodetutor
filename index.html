@@ -82,6 +82,8 @@
       margin: 0 auto;
     }
 
+    [data-platform="mac"] { display: none; }
+
     .platform-toggle {
       display: inline-flex;
       background: var(--color-primary-soft);
@@ -117,8 +119,8 @@
   <main class="container">
     <div class="platform-toggle-wrap">
       <div class="platform-toggle" role="tablist" aria-label="Operating system">
-        <button class="platform-btn" data-platform="win" role="tab">Windows</button>
-        <button class="platform-btn" data-platform="mac" role="tab">Mac</button>
+        <button class="platform-btn" data-platform="win" role="tab" aria-selected="false">Windows</button>
+        <button class="platform-btn" data-platform="mac" role="tab" aria-selected="false">Mac</button>
       </div>
     </div>
 
@@ -184,13 +186,17 @@
           platform = btn.dataset.platform;
           localStorage.setItem(PLATFORM_KEY, platform);
           document.querySelectorAll(".platform-btn").forEach(b => {
-            b.classList.toggle("is-active", b.dataset.platform === platform);
+            const active = b.dataset.platform === platform;
+            b.classList.toggle("is-active", active);
+            b.setAttribute("aria-selected", active ? "true" : "false");
           });
           applyPlatform(platform);
         });
       });
       document.querySelectorAll(".platform-btn").forEach(b => {
-        b.classList.toggle("is-active", b.dataset.platform === platform);
+        const active = b.dataset.platform === platform;
+        b.classList.toggle("is-active", active);
+        b.setAttribute("aria-selected", active ? "true" : "false");
       });
     }
 
