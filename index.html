@@ -338,6 +338,31 @@
       border-color: var(--color-success);
       color: white;
     }
+    .prompt-pair {
+      display: grid;
+      gap: var(--space-3);
+      margin: var(--space-3) 0;
+    }
+    .prompt-example {
+      border-radius: var(--radius-sm);
+      padding: var(--space-3) var(--space-4);
+      font-size: 14px;
+      border-left: 3px solid;
+    }
+    .prompt-bad {
+      background: #fef2f2;
+      border-left-color: #ef4444;
+      color: #7f1d1d;
+    }
+    .prompt-good {
+      background: var(--color-success-soft);
+      border-left-color: var(--color-success);
+      color: #064e3b;
+    }
+    .prompt-example .tag {
+      font-weight: 700;
+      margin-right: 8px;
+    }
   </style>
 </head>
 <body>
@@ -570,6 +595,98 @@
           </div>
           <p>Claude should now walk you through a structured brainstorming conversation before writing any code. That's superpowers in action.</p>
           <label class="step-check"><input type="checkbox" class="task-check" data-id="skills-tried"> I tried a skill</label>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="section-use-well" data-section="use-well">
+      <div class="section-header">
+        <div class="section-num">4</div>
+        <div class="section-title-wrap">
+          <h2>Use Claude Code well <span class="check-done">✓</span></h2>
+          <div class="section-meta">About 10 minutes — read through, no installs</div>
+          <div class="progress-bar"><div class="progress-bar-fill section-progress-fill"></div></div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-badge">1</div>
+        <div class="step-body">
+          <h3>Describe the goal, not the keystrokes</h3>
+          <p>Claude is better at the "what" than the "how". Tell it the outcome you want, not the exact steps.</p>
+          <div class="prompt-pair">
+            <div class="prompt-example prompt-bad"><span class="tag">❌</span>Open file.txt, go to line 3, change "hello" to "hi", save.</div>
+            <div class="prompt-example prompt-good"><span class="tag">✅</span>In file.txt, replace every "hello" with "hi".</div>
+          </div>
+          <label class="step-check"><input type="checkbox" class="task-check" data-id="well-goal"> Got it</label>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-badge">2</div>
+        <div class="step-body">
+          <h3>Give context first</h3>
+          <p>Claude can't see what's on your screen or in your head. Tell it what you're working on before you ask for help.</p>
+          <div class="prompt-pair">
+            <div class="prompt-example prompt-bad"><span class="tag">❌</span>Make it faster.</div>
+            <div class="prompt-example prompt-good"><span class="tag">✅</span>The Python script `analyze.py` reads a 50MB CSV and takes 2 minutes to finish. Can you help me figure out which part is slow and speed it up?</div>
+          </div>
+          <label class="step-check"><input type="checkbox" class="task-check" data-id="well-context"> Got it</label>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-badge">3</div>
+        <div class="step-body">
+          <h3>Show, don't tell</h3>
+          <p>If you can show an example — a screenshot, a sample, a piece of code you like — Claude will mimic it better than it can imagine it.</p>
+          <div class="prompt-pair">
+            <div class="prompt-example prompt-bad"><span class="tag">❌</span>Make my website look more professional.</div>
+            <div class="prompt-example prompt-good"><span class="tag">✅</span>Make my website look more like stripe.com — clean white background, sharp typography, lots of whitespace.</div>
+          </div>
+          <label class="step-check"><input type="checkbox" class="task-check" data-id="well-show"> Got it</label>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-badge">4</div>
+        <div class="step-body">
+          <h3>Be specific about the output</h3>
+          <p>Tell Claude what format you want back. Otherwise you'll get whatever it guesses.</p>
+          <div class="prompt-pair">
+            <div class="prompt-example prompt-bad"><span class="tag">❌</span>Give me ideas for a startup.</div>
+            <div class="prompt-example prompt-good"><span class="tag">✅</span>Give me 5 startup ideas in fintech for people in their 60s. For each: a one-line pitch, the main customer, and the biggest risk. Format as a numbered list.</div>
+          </div>
+          <label class="step-check"><input type="checkbox" class="task-check" data-id="well-output"> Got it</label>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-badge">5</div>
+        <div class="step-body">
+          <h3>Giving feedback mid-task</h3>
+          <p>You don't have to wait for Claude to finish. While it's working, you can:</p>
+          <p><strong>Type a new message</strong> to redirect — Claude reads it and adjusts.</p>
+          <p><strong>Press Escape</strong> to stop a run that's going sideways.</p>
+          <p>If a conversation has wandered far from what you wanted, it's often faster to <strong>start a fresh conversation</strong> than to try to steer the old one back.</p>
+          <label class="step-check"><input type="checkbox" class="task-check" data-id="well-feedback"> Got it</label>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-badge">6</div>
+        <div class="step-body">
+          <h3>The four git commands worth knowing</h3>
+          <p>You don't need to be a git expert. Just these four, in this order:</p>
+          <div class="code-block">
+            <pre><code>git status      # What files have I changed?
+git add .       # Stage all my changes
+git commit -m "what I did"   # Save a snapshot
+git push        # Send the snapshot to GitHub</code></pre>
+            <button class="copy-btn">Copy</button>
+          </div>
+          <p>Run these in PowerShell (Windows) or Terminal (Mac) from inside your project folder. Claude can also run them for you — just ask "commit and push my changes".</p>
+          <label class="step-check"><input type="checkbox" class="task-check" data-id="well-git"> Got it</label>
         </div>
       </div>
     </section>
