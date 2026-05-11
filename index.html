@@ -392,6 +392,43 @@
       font-size: 14px;
       color: var(--color-text-muted);
     }
+    .page-footer {
+      margin: var(--space-10) 0 var(--space-8);
+      padding-top: var(--space-6);
+      border-top: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+      font-size: 14px;
+    }
+    .page-footer h2 {
+      color: var(--color-text);
+      font-size: 20px;
+      margin-bottom: var(--space-3);
+    }
+    .page-footer h3 {
+      color: var(--color-text);
+      font-size: 15px;
+      margin: var(--space-4) 0 var(--space-2);
+    }
+    .faq details {
+      border-top: 1px solid var(--color-border);
+      padding: var(--space-3) 0;
+    }
+    .faq summary {
+      font-weight: 600;
+      color: var(--color-text);
+      cursor: pointer;
+    }
+    .faq summary::marker { color: var(--color-primary); }
+    .faq details[open] summary { margin-bottom: var(--space-2); }
+    .reset-link {
+      color: #b91c1c;
+      background: transparent;
+      border: none;
+      font: inherit;
+      cursor: pointer;
+      padding: 0;
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -772,6 +809,46 @@ git push        # Send the snapshot to GitHub</code></pre>
 
       <label class="step-check" style="margin-top: var(--space-4);"><input type="checkbox" class="task-check" data-id="projects-tried"> I kicked off my first project</label>
     </section>
+
+    <footer class="page-footer">
+      <h2>Troubleshooting</h2>
+      <div class="faq">
+        <details>
+          <summary>"command not found" when I run npm or claude-code</summary>
+          <p>Close and reopen PowerShell/Terminal — installs only take effect in new windows. If still broken, reinstall Node.js from <a href="https://nodejs.org/" target="_blank" rel="noopener">nodejs.org</a> and try again.</p>
+        </details>
+        <details>
+          <summary>The Claude Code panel says "Sign in failed"</summary>
+          <p>Sign out completely (click the gear icon in the panel → Sign out), close VSCode, reopen it, and sign in again. If you have multiple Anthropic accounts, make sure you're signing in with the one that has a plan.</p>
+        </details>
+        <details>
+          <summary>Claude says "rate limit reached" or "usage limit"</summary>
+          <p>You hit your plan's limit for the current window. Either wait (it resets every few hours on most plans) or upgrade.</p>
+        </details>
+        <details>
+          <summary>I installed a plugin but the slash commands don't work</summary>
+          <p>Reload VSCode (Ctrl/⌘+Shift+P → "Reload Window"). Plugins are picked up on startup.</p>
+        </details>
+        <details>
+          <summary>My checklist progress disappeared</summary>
+          <p>Progress is saved in your browser. If you switched browsers, used a private/incognito window, or cleared site data, the progress won't carry over.</p>
+        </details>
+      </div>
+
+      <h3>Where to get more help</h3>
+      <ul>
+        <li><a href="https://docs.anthropic.com/" target="_blank" rel="noopener">Anthropic docs</a> — official guides for Claude and Claude Code</li>
+        <li><a href="https://support.anthropic.com/" target="_blank" rel="noopener">Anthropic support</a> — for account or billing issues</li>
+        <li><a href="https://github.com/anthropics/claude-code/discussions" target="_blank" rel="noopener">Claude Code discussions on GitHub</a> — community Q&amp;A</li>
+      </ul>
+
+      <h3>Start over</h3>
+      <p><button id="reset-progress" class="reset-link">Reset my checklist progress</button></p>
+
+      <p style="margin-top: var(--space-6); font-size: 12px; color: var(--color-text-faint);">
+        Built with Claude Code. Source on <a href="https://github.com/baranmcl/vibecodetutor" target="_blank" rel="noopener">GitHub</a>. Open an issue if anything is wrong or out of date.
+      </p>
+    </footer>
   </main>
   <script>
     const STATE_KEY = "vibecodetutor:v1";
