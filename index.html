@@ -164,7 +164,7 @@
     }
     .prereq label {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: var(--space-3);
       cursor: pointer;
       font-size: 15px;
@@ -904,8 +904,8 @@ git push        # Send the snapshot to GitHub</code></pre>
       <h2>Troubleshooting</h2>
       <div class="faq">
         <details>
-          <summary>"command not found" when I run npm or claude-code</summary>
-          <p>Close and reopen PowerShell/Terminal — installs only take effect in new windows. If still broken, reinstall Node.js from <a href="https://nodejs.org/" target="_blank" rel="noopener">nodejs.org</a> and try again.</p>
+          <summary>"command not found" when I run claude-code</summary>
+          <p>Close and reopen PowerShell/Terminal — installs only take effect in new windows. If still broken, re-run the install command from Section 2.</p>
         </details>
         <details>
           <summary>The Claude Code panel says "Sign in failed"</summary>
