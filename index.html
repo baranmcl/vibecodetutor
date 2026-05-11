@@ -685,6 +685,22 @@
           <label class="step-check"><input type="checkbox" class="task-check" data-id="install-hello"> Claude said hi back</label>
         </div>
       </div>
+
+      <div class="step">
+        <div class="step-badge">6</div>
+        <div class="step-body">
+          <h3>Make a home for your projects</h3>
+          <p>Pick one folder where all your future projects will live. This keeps things tidy and makes them easy to find. A common choice is a folder called <strong>Code</strong> right inside your user folder.</p>
+          <div data-platform="win">
+            <p>Open <strong>File Explorer</strong> (Windows key + E). In the left sidebar, click your username. In the empty area, right-click and choose <strong>New → Folder</strong>, name it <code>Code</code>, and press Enter. The full path will be <code>C:\Users\&lt;your-name&gt;\Code</code>.</p>
+          </div>
+          <div data-platform="mac">
+            <p>Open <strong>Finder</strong>. In the top menu, click <strong>Go → Home</strong>. In the empty area, right-click and choose <strong>New Folder</strong>, name it <code>Code</code>, and press Enter. The full path will be <code>~/Code</code> (which expands to <code>/Users/&lt;your-name&gt;/Code</code>).</p>
+          </div>
+          <p>Now tell VSCode to use this folder by default when you clone a project from GitHub. In VSCode, press <strong><span class="platform-text" data-win="Ctrl" data-mac="⌘"></span>+,</strong> (comma) to open Settings. In the search bar, type <em>default clone directory</em>. Set the value to the path of your new Code folder.</p>
+          <label class="step-check"><input type="checkbox" class="task-check" data-id="install-code-folder"> Code folder created and set as VSCode default clone directory</label>
+        </div>
+      </div>
     </section>
 
     <section class="section" id="section-skills" data-section="skills">
