@@ -300,6 +300,44 @@
       transition: background 120ms;
     }
     .btn-primary:hover { background: var(--color-primary-dark); }
+
+    .code-block {
+      position: relative;
+      margin: var(--space-3) 0;
+    }
+    .code-block pre {
+      background: var(--color-code-bg);
+      color: var(--color-code-text);
+      padding: var(--space-4);
+      padding-right: 80px;
+      border-radius: var(--radius-sm);
+      overflow-x: auto;
+      margin: 0;
+      font-family: var(--font-mono);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .copy-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--color-code-text);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-sm);
+      padding: 4px 12px;
+      font-size: 12px;
+      font-family: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 120ms;
+    }
+    .copy-btn:hover { background: rgba(255, 255, 255, 0.2); }
+    .copy-btn.is-copied {
+      background: var(--color-success);
+      border-color: var(--color-success);
+      color: white;
+    }
   </style>
 </head>
 <body>
@@ -376,6 +414,92 @@
           <div class="callout callout-cost"><strong>💰 What to expect:</strong> Plan prices are shown on the Anthropic site when you sign up. Most beginners start with the lower subscription tier and upgrade only if they hit the limits. <em>(Exact prices verified at implementation time — see Task 13.)</em></div>
           <p>Add a payment method, choose your plan, and confirm.</p>
           <label class="step-check"><input type="checkbox" class="task-check" data-id="accounts-plan"> I picked a plan and added payment</label>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="section-install" data-section="install">
+      <div class="section-header">
+        <div class="section-num">2</div>
+        <div class="section-title-wrap">
+          <h2>Install your tools <span class="check-done">✓</span></h2>
+          <div class="section-meta">About 15 minutes</div>
+          <div class="progress-bar"><div class="progress-bar-fill section-progress-fill"></div></div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-badge">1</div>
+        <div class="step-body">
+          <h3>Install VSCode</h3>
+          <p>VSCode is a free code editor from Microsoft. Think of it like <strong>Microsoft Word, but for code</strong>. It's where you'll talk to Claude.</p>
+          <p><a href="https://code.visualstudio.com/" target="_blank" rel="noopener" class="btn-primary">Open code.visualstudio.com →</a></p>
+          <div data-platform="win">
+            <p>Click the big blue "Download for Windows" button. Once the download finishes, double-click the installer and accept the defaults — the only setting worth changing is checking <em>"Add to PATH"</em> if it's not already checked (this lets other tools find VSCode).</p>
+          </div>
+          <div data-platform="mac">
+            <p>Click the big blue "Download Mac Universal" button. Once the .zip finishes downloading, double-click it to unzip. Drag the <em>Visual Studio Code</em> icon into your Applications folder.</p>
+          </div>
+          <label class="step-check"><input type="checkbox" class="task-check" data-id="install-vscode"> VSCode is installed and I can open it</label>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-badge">2</div>
+        <div class="step-body">
+          <h3>Install Claude Code</h3>
+          <p>Claude Code is the actual AI assistant that runs inside VSCode. It can read your files, write code, and run commands for you.</p>
+          <div data-platform="win">
+            <p>Claude Code on Windows needs <strong>Node.js</strong> first (a tool that lets other programs run). Download and install it from <a href="https://nodejs.org/" target="_blank" rel="noopener">nodejs.org</a> — pick the "LTS" version, run the installer, accept defaults.</p>
+            <p>Then open <strong>PowerShell</strong> (press the Windows key, type "PowerShell", press Enter) and paste this command:</p>
+            <div class="code-block">
+              <pre><code>npm install -g @anthropic-ai/claude-code</code></pre>
+              <button class="copy-btn">Copy</button>
+            </div>
+            <p>Press Enter. Wait for it to finish (usually under a minute). <em>(Exact install command verified at implementation time — see Task 13.)</em></p>
+          </div>
+          <div data-platform="mac">
+            <p>Open <strong>Terminal</strong> (press Cmd+Space, type "Terminal", press Enter). Paste this command:</p>
+            <div class="code-block">
+              <pre><code>npm install -g @anthropic-ai/claude-code</code></pre>
+              <button class="copy-btn">Copy</button>
+            </div>
+            <p>If your Mac says "command not found: npm", you need Node.js first. Install it from <a href="https://nodejs.org/" target="_blank" rel="noopener">nodejs.org</a> (pick the "LTS" version), then try the command again. <em>(Exact install command verified at implementation time — see Task 13.)</em></p>
+          </div>
+          <label class="step-check"><input type="checkbox" class="task-check" data-id="install-claude-code"> Claude Code is installed</label>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-badge">3</div>
+        <div class="step-body">
+          <h3>Install the Claude Code VSCode extension</h3>
+          <p>This is the panel inside VSCode where you'll actually chat with Claude.</p>
+          <p>Open VSCode. On the left sidebar, click the <strong>Extensions</strong> icon (it looks like four squares). In the search box, type <em>Claude Code</em>. Find the one published by Anthropic and click <strong>Install</strong>.</p>
+          <label class="step-check"><input type="checkbox" class="task-check" data-id="install-extension"> Extension installed</label>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-badge">4</div>
+        <div class="step-body">
+          <h3>Sign in</h3>
+          <p>After install, you'll see a Claude icon on the left sidebar — click it to open the Claude Code panel. The panel will prompt you to sign in. Click <strong>Sign in</strong>; a browser tab opens; sign in with your Anthropic account; the tab closes and the panel says you're connected.</p>
+          <label class="step-check"><input type="checkbox" class="task-check" data-id="install-signin"> I'm signed in</label>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-badge">5</div>
+        <div class="step-body">
+          <h3>Say hello to Claude</h3>
+          <p>In the Claude Code panel, type this and press Enter:</p>
+          <div class="code-block">
+            <pre><code>Hello! Can you tell me what you can help with?</code></pre>
+            <button class="copy-btn">Copy</button>
+          </div>
+          <p>You should see Claude reply within a few seconds. Congrats — you're set up.</p>
+          <label class="step-check"><input type="checkbox" class="task-check" data-id="install-hello"> Claude said hi back</label>
         </div>
       </div>
     </section>
