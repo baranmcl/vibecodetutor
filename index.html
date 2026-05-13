@@ -701,6 +701,36 @@
           <label class="step-check"><input type="checkbox" class="task-check" data-id="install-code-folder"> Code folder created and set as VSCode default clone directory</label>
         </div>
       </div>
+
+      <div class="step">
+        <div class="step-badge">7</div>
+        <div class="step-body">
+          <h3>See your Claude usage with ccusage</h3>
+          <p><strong>ccusage</strong> is a free command-line tool that reads Claude Code's local logs and shows how many tokens you've used and what it would cost — handy for keeping an eye on your plan limits.</p>
+          <p>It runs through <strong>bun</strong>, a small, fast JavaScript runtime. Install bun first.</p>
+          <div data-platform="win">
+            <p>In <strong>PowerShell</strong>, paste:</p>
+            <div class="code-block">
+              <pre><code>irm bun.sh/install.ps1 | iex</code></pre>
+              <button class="copy-btn">Copy</button>
+            </div>
+          </div>
+          <div data-platform="mac">
+            <p>In <strong>Terminal</strong>, paste:</p>
+            <div class="code-block">
+              <pre><code>curl -fsSL https://bun.sh/install | bash</code></pre>
+              <button class="copy-btn">Copy</button>
+            </div>
+          </div>
+          <p>Close and reopen your <span data-platform="win">PowerShell</span><span data-platform="mac">Terminal</span> window so the new <code>bun</code> command is on your PATH. Then run:</p>
+          <div class="code-block">
+            <pre><code>bunx ccusage</code></pre>
+            <button class="copy-btn">Copy</button>
+          </div>
+          <p>You'll see a table of your recent days — tokens in, tokens out, and an estimated cost. Run it any time you want a quick read on your usage.</p>
+          <label class="step-check"><input type="checkbox" class="task-check" data-id="install-ccusage"> bun is installed and ccusage works</label>
+        </div>
+      </div>
     </section>
 
     <section class="section" id="section-skills" data-section="skills">
@@ -768,6 +798,24 @@
 
       <div class="step">
         <div class="step-badge">4</div>
+        <div class="step-body">
+          <h3>Install frontend-design (by Anthropic)</h3>
+          <p>This teaches Claude to design distinctive, polished web interfaces — instead of the bland, generic look AI tends to default to. Especially handy if you're building a website.</p>
+          <p>In the Claude Code panel, paste each of these one at a time:</p>
+          <div class="code-block">
+            <pre><code>/plugin marketplace add anthropics/claude-code</code></pre>
+            <button class="copy-btn">Copy</button>
+          </div>
+          <div class="code-block">
+            <pre><code>/plugin install frontend-design@claude-code-plugins</code></pre>
+            <button class="copy-btn">Copy</button>
+          </div>
+          <label class="step-check"><input type="checkbox" class="task-check" data-id="skills-frontend-design"> frontend-design installed</label>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-badge">5</div>
         <div class="step-body">
           <h3>Try one</h3>
           <p>In the Claude Code panel, type:</p>
