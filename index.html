@@ -260,7 +260,7 @@
     }
     .step-body p { margin: 0 0 var(--space-3); color: var(--color-text-muted); }
     .step-body p:last-child { margin-bottom: 0; }
-    .step-body a { color: var(--color-primary-dark); }
+    .step-body a:not(.btn-primary) { color: var(--color-primary-dark); }
 
     .callout {
       background: var(--color-primary-soft);
@@ -322,7 +322,7 @@
       position: absolute;
       top: 8px;
       right: 8px;
-      background: rgba(255, 255, 255, 0.1);
+      background: #35325d;
       color: var(--color-code-text);
       border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: var(--radius-sm);
@@ -333,7 +333,7 @@
       cursor: pointer;
       transition: background 120ms;
     }
-    .copy-btn:hover { background: rgba(255, 255, 255, 0.2); }
+    .copy-btn:hover { background: #4b496f; }
     .copy-btn.is-copied {
       background: var(--color-success);
       border-color: var(--color-success);
