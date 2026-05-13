@@ -82,7 +82,8 @@
       margin: 0 auto;
     }
 
-    [data-platform="mac"]:not(.platform-btn) { display: none; }
+    body[data-platform="win"] [data-platform="mac"]:not(.platform-btn),
+    body[data-platform="mac"] [data-platform="win"]:not(.platform-btn) { display: none; }
 
     .platform-toggle {
       display: inline-flex;
@@ -487,7 +488,7 @@
     }
   </style>
 </head>
-<body>
+<body data-platform="win">
   <div class="progress-sticky" id="overall-progress" aria-label="Overall progress">
     <div class="progress-sticky-inner">
       <span id="overall-progress-label">0% complete</span>
@@ -1065,9 +1066,7 @@ git push        # Send the snapshot to GitHub</code></pre>
     }
 
     function applyPlatform(platform) {
-      document.querySelectorAll("[data-platform]:not(.platform-btn)").forEach(el => {
-        el.style.display = (el.dataset.platform === platform) ? "" : "none";
-      });
+      document.body.dataset.platform = platform;
       document.querySelectorAll(".platform-text").forEach(el => {
         el.textContent = (platform === "mac") ? el.dataset.mac : el.dataset.win;
       });
