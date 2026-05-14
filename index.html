@@ -594,14 +594,14 @@
           <p>VSCode is a free code editor from Microsoft. Think of it like <strong>Microsoft Word, but for code</strong>. It's where you'll talk to Claude.</p>
           <p><a href="https://code.visualstudio.com/" target="_blank" rel="noopener" class="btn-primary">Open code.visualstudio.com →</a></p>
           <div data-platform="win">
-            <p>Click the big blue "Download for Windows" button. Once the download finishes, double-click the installer and accept the defaults — the only setting worth changing is checking <em>"Add to PATH"</em> if it's not already checked (this lets other tools find VSCode).</p>
+            <p>Click the big "Download for Windows" button. Once the download finishes, double-click the installer and accept the defaults — the only setting worth changing is checking <em>"Add to PATH"</em> if it's not already checked (this lets other tools find VSCode).</p>
           </div>
           <div data-platform="mac">
-            <p>Click the big blue "Download Mac Universal" button. Once the .zip finishes downloading, double-click it to unzip. Drag the <em>Visual Studio Code</em> icon into your Applications folder.</p>
+            <p>Click the big "Download Mac Universal" button. Once the .zip finishes downloading, double-click it to unzip. Drag the <em>Visual Studio Code</em> icon into your Applications folder.</p>
           </div>
           <figure class="screenshot">
-            <img src="assets/screenshots/vscode-download.webp" alt="The VSCode download page with the blue download button highlighted." loading="lazy">
-            <figcaption class="screenshot-caption">Click the big blue download button.</figcaption>
+            <img src="assets/screenshots/vscode-download.webp" alt="The VSCode download page with the 'Download for Windows' button highlighted." loading="lazy">
+            <figcaption class="screenshot-caption">Click the big download button.</figcaption>
           </figure>
           <label class="step-check"><input type="checkbox" class="task-check" data-id="install-vscode"> VSCode is installed and I can open it</label>
         </div>
@@ -661,10 +661,12 @@
         <div class="step-body">
           <h3>Sign in</h3>
           <p>After install, you'll see a Claude icon on the left sidebar — click it to open the Claude Code panel. The panel will prompt you to sign in. Click <strong>Sign in</strong>; a browser tab opens; sign in with your Anthropic account; the tab closes and the panel says you're connected.</p>
+          <!-- Hidden until first-auth.webp is captured. Re-enable by uncommenting:
           <figure class="screenshot">
             <img src="assets/screenshots/first-auth.webp" alt="The first-time Claude Code sign-in screen in a browser tab." loading="lazy">
             <figcaption class="screenshot-caption">The sign-in tab that opens automatically.</figcaption>
           </figure>
+          -->
           <label class="step-check"><input type="checkbox" class="task-check" data-id="install-signin"> I'm signed in</label>
         </div>
       </div>
@@ -1140,6 +1142,14 @@ git push        # Send the snapshot to GitHub</code></pre>
       });
     }
 
+    function wireScreenshotFallback() {
+      document.querySelectorAll(".screenshot img").forEach(img => {
+        const hide = () => { img.closest(".screenshot").style.display = "none"; };
+        if (img.complete && img.naturalWidth === 0) hide();
+        else img.addEventListener("error", hide);
+      });
+    }
+
     function wireScrollspy() {
       const sections = document.querySelectorAll(".section[id]");
       const links = document.querySelectorAll(".toc a");
@@ -1162,6 +1172,7 @@ git push        # Send the snapshot to GitHub</code></pre>
       wireCheckboxes();
       wireCopyButtons();
       wireResetButton();
+      wireScreenshotFallback();
       wireScrollspy();
       updateProgress();
     });
