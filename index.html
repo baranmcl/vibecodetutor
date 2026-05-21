@@ -557,22 +557,23 @@
         <div class="step-body">
           <h3>Make a Claude account</h3>
           <p>Claude is the AI you'll be talking to. <strong>Anthropic</strong> is the company that makes Claude.</p>
-          <p><a href="https://console.anthropic.com/" target="_blank" rel="noopener" class="btn-primary">Open console.anthropic.com →</a></p>
+          <p><a href="https://claude.ai/" target="_blank" rel="noopener" class="btn-primary">Open claude.ai →</a></p>
           <p>Sign up using your email or Google account. You'll get a verification email — click the link to confirm.</p>
-          <label class="step-check"><input type="checkbox" class="task-check" data-id="accounts-anthropic"> I created my Anthropic account</label>
+          <div class="callout callout-cost"><strong>⚠️ Make sure you're on claude.ai.</strong> Anthropic also runs a separate site, <code>console.anthropic.com</code>, which is a developer tool with its own pay-per-use "credits" billing. That is <em>not</em> what this guide uses — if you end up there, close it and go back to <strong>claude.ai</strong>.</div>
+          <label class="step-check"><input type="checkbox" class="task-check" data-id="accounts-anthropic"> I created my Claude account</label>
         </div>
       </div>
 
       <div class="step">
         <div class="step-badge">3</div>
         <div class="step-body">
-          <h3>Pick a plan and add payment</h3>
-          <p>Claude Code needs a paid plan. There are two ways to pay:</p>
-          <p><strong>Claude Pro / Max subscription</strong> (recommended for most beginners) — a flat monthly fee, with a generous usage limit that resets every few hours. Predictable cost.</p>
-          <p><strong>API pay-as-you-go</strong> — you load credit and pay per use. Cheaper if you only use Claude occasionally, but harder to predict.</p>
-          <div class="callout callout-cost"><strong>💰 What to expect:</strong> Claude Pro is $20/month and works well for most beginners. Claude Max is $100/month (5× Pro usage) or $200/month (20× usage) for heavier users. API pay-as-you-go lets you load credits and pay per use — good if you only use Claude occasionally. Most people start with Pro and upgrade only if they hit the limits.</div>
-          <p>Add a payment method, choose your plan, and confirm.</p>
-          <label class="step-check"><input type="checkbox" class="task-check" data-id="accounts-plan"> I picked a plan and added payment</label>
+          <h3>Subscribe to a plan</h3>
+          <p>Claude Code needs a paid subscription. On <strong>claude.ai</strong>, open your account menu (your initials, bottom-left of the sidebar) and choose <strong>Upgrade</strong> — or go to <strong>Settings → Billing</strong>.</p>
+          <p><strong>Claude Pro — $20/month.</strong> The right choice for almost every beginner. A flat monthly fee with a generous usage limit that resets every few hours. Predictable cost, no surprises.</p>
+          <p><strong>Claude Max — $100 or $200/month.</strong> The same thing with much higher limits (5× and 20× Pro). Only worth it once you're using Claude Code heavily, every day.</p>
+          <div class="callout callout-cost"><strong>💰 What to pick:</strong> Start with <strong>Pro at $20/month</strong> — it's plenty for learning and everyday projects. If you ever hit the limits, upgrading to Max is one click. There's no reason to start higher.</div>
+          <p>Add a payment method, choose <strong>Pro</strong>, and confirm.</p>
+          <label class="step-check"><input type="checkbox" class="task-check" data-id="accounts-plan"> I subscribed to a plan</label>
         </div>
       </div>
     </section>
@@ -660,7 +661,8 @@
         <div class="step-badge">4</div>
         <div class="step-body">
           <h3>Sign in</h3>
-          <p>After install, you'll see a Claude icon on the left sidebar — click it to open the Claude Code panel. The panel will prompt you to sign in. Click <strong>Sign in</strong>; a browser tab opens; sign in with your Anthropic account; the tab closes and the panel says you're connected.</p>
+          <p>After install, you'll see a Claude icon on the left sidebar — click it to open the Claude Code panel. The panel will prompt you to sign in. Click <strong>Sign in</strong>; a browser tab opens; sign in with the <strong>claude.ai</strong> account you created in Section 1; the tab closes and the panel says you're connected.</p>
+          <div class="callout"><strong>You're signing in, not signing up.</strong> This is the same account from Section 1 — use the same email and password. You don't need to create a new account here.</div>
           <!-- Hidden until first-auth.webp is captured. Re-enable by uncommenting:
           <figure class="screenshot">
             <img src="assets/screenshots/first-auth.webp" alt="The first-time Claude Code sign-in screen in a browser tab." loading="lazy">
@@ -986,7 +988,7 @@ git push        # Send the snapshot to GitHub</code></pre>
         </details>
         <details>
           <summary>The Claude Code panel says "Sign in failed"</summary>
-          <p>Sign out completely (click the gear icon in the panel → Sign out), close VSCode, reopen it, and sign in again. If you have multiple Anthropic accounts, make sure you're signing in with the one that has a plan.</p>
+          <p>Sign out completely (click the gear icon in the panel → Sign out), close VSCode, reopen it, and sign in again. If you have multiple Claude accounts, make sure you're signing in with the one that has a paid plan.</p>
         </details>
         <details>
           <summary>Claude says "rate limit reached" or "usage limit"</summary>
