@@ -766,19 +766,23 @@
         <div class="step-badge">2</div>
         <div class="step-body">
           <h3>Install superpowers (by Jesse Vincent / "obra")</h3>
-          <p>This adds careful planning, debugging, and code review skills. In the Claude Code panel, paste each of these one at a time:</p>
+          <p>This adds careful planning, debugging, and code review skills.</p>
+          <p>Plugins are installed from a <strong>terminal</strong> — not the chat panel. Open VSCode's built-in terminal from the top menu: <strong>Terminal → New Terminal</strong>. Then paste these two commands one at a time, pressing Enter after each:</p>
           <div class="code-block">
-            <pre><code>/plugin marketplace add obra/superpowers-marketplace</code></pre>
+            <pre><code>claude plugin marketplace add obra/superpowers-marketplace</code></pre>
             <button class="copy-btn">Copy</button>
           </div>
           <div class="code-block">
-            <pre><code>/plugin install superpowers@superpowers-marketplace</code></pre>
+            <pre><code>claude plugin install superpowers@superpowers-marketplace</code></pre>
             <button class="copy-btn">Copy</button>
           </div>
+          <div class="callout"><strong>Don't paste these into the chat panel.</strong> The chat panel can't install plugins — pasting a <code>/plugin</code> command there gives the error "/plugin isn't available in this environment." Run the <code>claude plugin</code> commands in the terminal instead; the skills they install work in the chat panel too. If the terminal says <code>claude</code> isn't recognized, close VSCode completely, reopen it, and try again.</div>
+          <!-- Obsolete: this screenshot showed the old chat-panel method. Recapture as a terminal screenshot to re-enable.
           <figure class="screenshot">
             <img src="assets/screenshots/plugin-install.webp" alt="The Claude Code panel showing the /plugin install command autocomplete." loading="lazy">
             <figcaption class="screenshot-caption">Paste each slash command into the Claude Code panel.</figcaption>
           </figure>
+          -->
           <label class="step-check"><input type="checkbox" class="task-check" data-id="skills-superpowers"> superpowers installed</label>
         </div>
       </div>
@@ -811,13 +815,13 @@
         <div class="step-body">
           <h3>Install frontend-design (by Anthropic)</h3>
           <p>This teaches Claude to design distinctive, polished web interfaces — instead of the bland, generic look AI tends to default to. Especially handy if you're building a website.</p>
-          <p>In the Claude Code panel, paste each of these one at a time:</p>
+          <p>Same as the last step — in VSCode's terminal (<strong>Terminal → New Terminal</strong>), paste these two commands one at a time:</p>
           <div class="code-block">
-            <pre><code>/plugin marketplace add anthropics/claude-code</code></pre>
+            <pre><code>claude plugin marketplace add anthropics/claude-code</code></pre>
             <button class="copy-btn">Copy</button>
           </div>
           <div class="code-block">
-            <pre><code>/plugin install frontend-design@claude-code-plugins</code></pre>
+            <pre><code>claude plugin install frontend-design@claude-code-plugins</code></pre>
             <button class="copy-btn">Copy</button>
           </div>
           <label class="step-check"><input type="checkbox" class="task-check" data-id="skills-frontend-design"> frontend-design installed</label>
@@ -998,6 +1002,10 @@ git push        # Send the snapshot to GitHub</code></pre>
         <details>
           <summary>Claude says "rate limit reached" or "usage limit"</summary>
           <p>You hit your plan's limit for the current window. Either wait (it resets every few hours on most plans) or upgrade.</p>
+        </details>
+        <details>
+          <summary>"/plugin isn't available in this environment"</summary>
+          <p>The <code>/plugin</code> command only works in a terminal, not the Claude Code chat panel. Open VSCode's terminal (<strong>Terminal → New Terminal</strong>) and run the <code>claude plugin …</code> commands from Section 3 instead.</p>
         </details>
         <details>
           <summary>I installed a plugin but the slash commands don't work</summary>
