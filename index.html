@@ -261,6 +261,9 @@
     .step-body p { margin: 0 0 var(--space-3); color: var(--color-text-muted); }
     .step-body p:last-child { margin-bottom: 0; }
     .step-body a:not(.btn-primary) { color: var(--color-primary-dark); }
+    .step-body ol { margin: 0 0 var(--space-3); padding-left: var(--space-5); color: var(--color-text-muted); }
+    .step-body ol li { margin-bottom: var(--space-2); }
+    .step-body ol li:last-child { margin-bottom: 0; }
 
     .callout {
       background: var(--color-primary-soft);
@@ -767,22 +770,16 @@
         <div class="step-body">
           <h3>Install superpowers (by Jesse Vincent / "obra")</h3>
           <p>This adds careful planning, debugging, and code review skills.</p>
-          <p>Plugins are installed from a <strong>terminal</strong> — not the chat panel. Open VSCode's built-in terminal from the top menu: <strong>Terminal → New Terminal</strong>. Then paste these two commands one at a time, pressing Enter after each:</p>
-          <div class="code-block">
-            <pre><code>claude plugin marketplace add obra/superpowers-marketplace</code></pre>
-            <button class="copy-btn">Copy</button>
-          </div>
-          <div class="code-block">
-            <pre><code>claude plugin install superpowers@superpowers-marketplace</code></pre>
-            <button class="copy-btn">Copy</button>
-          </div>
-          <div class="callout"><strong>Don't paste these into the chat panel.</strong> The chat panel can't install plugins — pasting a <code>/plugin</code> command there gives the error "/plugin isn't available in this environment." Run the <code>claude plugin</code> commands in the terminal instead; the skills they install work in the chat panel too. If the terminal says <code>claude</code> isn't recognized, close VSCode completely, reopen it, and try again.</div>
-          <!-- Obsolete: this screenshot showed the old chat-panel method. Recapture as a terminal screenshot to re-enable.
-          <figure class="screenshot">
-            <img src="assets/screenshots/plugin-install.webp" alt="The Claude Code panel showing the /plugin install command autocomplete." loading="lazy">
-            <figcaption class="screenshot-caption">Paste each slash command into the Claude Code panel.</figcaption>
-          </figure>
-          -->
+          <p>In the Claude Code chat panel, type <code>/plugins</code> — with an <strong>s</strong> on the end — and press Enter. A plugin manager window opens. Then:</p>
+          <ol>
+            <li>Click the <strong>Marketplaces</strong> tab.</li>
+            <li>In the text field, enter <code>obra/superpowers-marketplace</code> and add it.</li>
+            <li>If a <strong>Restart</strong> prompt appears, click it.</li>
+            <li>Open the plugin manager again (type <code>/plugins</code>), click the <strong>Plugins</strong> tab, find <strong>superpowers</strong> in the list, and click <strong>Install</strong>. If it asks where to install, choose <strong>for yourself</strong>.</li>
+            <li>If it asks to restart once more, click <strong>Restart</strong>. That's it.</li>
+          </ol>
+          <div class="callout"><strong>Use <code>/plugins</code>, not <code>/plugin</code>.</strong> The plural opens this manager and works right in the chat panel — no terminal needed. The singular <code>/plugin</code> only works in a terminal and will show an error here.</div>
+          <!-- A screenshot of the /plugins manager can be added here later. -->
           <label class="step-check"><input type="checkbox" class="task-check" data-id="skills-superpowers"> superpowers installed</label>
         </div>
       </div>
@@ -815,15 +812,11 @@
         <div class="step-body">
           <h3>Install frontend-design (by Anthropic)</h3>
           <p>This teaches Claude to design distinctive, polished web interfaces — instead of the bland, generic look AI tends to default to. Especially handy if you're building a website.</p>
-          <p>Same as the last step — in VSCode's terminal (<strong>Terminal → New Terminal</strong>), paste these two commands one at a time:</p>
-          <div class="code-block">
-            <pre><code>claude plugin marketplace add anthropics/claude-code</code></pre>
-            <button class="copy-btn">Copy</button>
-          </div>
-          <div class="code-block">
-            <pre><code>claude plugin install frontend-design@claude-code-plugins</code></pre>
-            <button class="copy-btn">Copy</button>
-          </div>
+          <p>Same flow as the last step. Type <code>/plugins</code> in the chat panel, then:</p>
+          <ol>
+            <li>On the <strong>Marketplaces</strong> tab, enter <code>anthropics/claude-code</code> and add it. Restart if prompted.</li>
+            <li>Reopen <code>/plugins</code>, and on the <strong>Plugins</strong> tab find <strong>frontend-design</strong> and click <strong>Install</strong>. Restart once more if prompted.</li>
+          </ol>
           <label class="step-check"><input type="checkbox" class="task-check" data-id="skills-frontend-design"> frontend-design installed</label>
         </div>
       </div>
@@ -992,8 +985,8 @@ git push        # Send the snapshot to GitHub</code></pre>
       <h2>Troubleshooting</h2>
       <div class="faq">
         <details>
-          <summary>"command not found" when I run claude-code</summary>
-          <p>Close and reopen PowerShell/Terminal — installs only take effect in new windows. If still broken, re-run the install command from Section 2.</p>
+          <summary>"command not found" or "not recognized" when I run claude</summary>
+          <p>A newly installed command only appears in <em>new</em> terminal windows. Close and reopen your terminal. If you're using VSCode's built-in terminal, opening a new terminal tab isn't enough — fully quit VSCode and reopen it ("Reload Window" won't do it). If it still fails, re-run the install command from Section 2.</p>
         </details>
         <details>
           <summary>The Claude Code panel says "Sign in failed"</summary>
@@ -1005,7 +998,7 @@ git push        # Send the snapshot to GitHub</code></pre>
         </details>
         <details>
           <summary>"/plugin isn't available in this environment"</summary>
-          <p>The <code>/plugin</code> command only works in a terminal, not the Claude Code chat panel. Open VSCode's terminal (<strong>Terminal → New Terminal</strong>) and run the <code>claude plugin …</code> commands from Section 3 instead.</p>
+          <p>You typed <code>/plugin</code> (singular). In the chat panel, use <code>/plugins</code> (plural) instead — that opens the plugin manager used in Section 3.</p>
         </details>
         <details>
           <summary>I installed a plugin but the slash commands don't work</summary>
