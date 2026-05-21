@@ -586,7 +586,7 @@
         <div class="section-num">2</div>
         <div class="section-title-wrap">
           <h2>Install your tools <span class="check-done">✓</span></h2>
-          <div class="section-meta">About 15 minutes</div>
+          <div class="section-meta">About 20 minutes</div>
           <div class="progress-bar"><div class="progress-bar-fill section-progress-fill"></div></div>
         </div>
       </div>
@@ -613,6 +613,28 @@
 
       <div class="step">
         <div class="step-badge">2</div>
+        <div class="step-body">
+          <h3>Install Git</h3>
+          <p>Git is a free tool that tracks changes to your files — and Claude Code uses it behind the scenes to download skills and projects. It is <em>not</em> the same as your GitHub account from Section 1: <strong>GitHub</strong> is the website, <strong>Git</strong> is the program on your computer.</p>
+          <div data-platform="win">
+            <p><a href="https://git-scm.com/download/win" target="_blank" rel="noopener" class="btn-primary">Download Git for Windows →</a></p>
+            <p>The download starts on its own. Run the installer and accept every default — just keep clicking <strong>Next</strong>, then <strong>Install</strong>. This also installs <strong>Git Bash</strong>, a terminal you'll use later.</p>
+          </div>
+          <div data-platform="mac">
+            <p>Macs install Git through Apple's developer tools. Open <strong>Terminal</strong> (Cmd+Space, type "Terminal", press Enter) and run:</p>
+            <div class="code-block">
+              <pre><code>git --version</code></pre>
+              <button class="copy-btn">Copy</button>
+            </div>
+            <p>If Git isn't installed yet, macOS pops up a dialog offering to install the <em>command line developer tools</em> — click <strong>Install</strong> and wait for it to finish. Run <code>git --version</code> again to confirm it prints a version number.</p>
+          </div>
+          <p>When it's done, <strong>fully quit VSCode and reopen it</strong> (if it's open) so it can find Git.</p>
+          <label class="step-check"><input type="checkbox" class="task-check" data-id="install-git"> Git is installed</label>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-badge">3</div>
         <div class="step-body">
           <h3>Install Claude Code</h3>
           <p>Claude Code is the actual AI assistant that runs inside VSCode. It can read your files, write code, and run commands for you.</p>
@@ -647,7 +669,7 @@
       </div>
 
       <div class="step">
-        <div class="step-badge">3</div>
+        <div class="step-badge">4</div>
         <div class="step-body">
           <h3>Install the Claude Code VSCode extension</h3>
           <p>This is the panel inside VSCode where you'll actually chat with Claude.</p>
@@ -661,7 +683,7 @@
       </div>
 
       <div class="step">
-        <div class="step-badge">4</div>
+        <div class="step-badge">5</div>
         <div class="step-body">
           <h3>Sign in</h3>
           <p>After install, you'll see a Claude icon on the left sidebar — click it to open the Claude Code panel. The panel will prompt you to sign in. Click <strong>Sign in</strong>; a browser tab opens; sign in with the <strong>claude.ai</strong> account you created in Section 1; the tab closes and the panel says you're connected.</p>
@@ -677,7 +699,7 @@
       </div>
 
       <div class="step">
-        <div class="step-badge">5</div>
+        <div class="step-badge">6</div>
         <div class="step-body">
           <h3>Say hello to Claude</h3>
           <p>In the Claude Code panel, type this and press Enter:</p>
@@ -695,7 +717,7 @@
       </div>
 
       <div class="step">
-        <div class="step-badge">6</div>
+        <div class="step-badge">7</div>
         <div class="step-body">
           <h3>Make a home for your projects</h3>
           <p>Pick one folder where all your future projects will live. This keeps things tidy and makes them easy to find. A common choice is a folder called <strong>Code</strong> right inside your user folder.</p>
@@ -716,7 +738,7 @@
       </div>
 
       <div class="step">
-        <div class="step-badge">7</div>
+        <div class="step-badge">8</div>
         <div class="step-body">
           <h3>See your Claude usage with ccusage</h3>
           <p><strong>ccusage</strong> is a free command-line tool that reads Claude Code's local logs and shows how many tokens you've used and what it would cost — handy for keeping an eye on your plan limits.</p>
@@ -999,6 +1021,10 @@ git push        # Send the snapshot to GitHub</code></pre>
         <details>
           <summary>"/plugin isn't available in this environment"</summary>
           <p>You typed <code>/plugin</code> (singular). In the chat panel, use <code>/plugins</code> (plural) instead — that opens the plugin manager used in Section 3.</p>
+        </details>
+        <details>
+          <summary>"Failed to add marketplace" or "git not found" when adding a plugin</summary>
+          <p>Adding a plugin marketplace needs Git installed (Section 2, Step 2). Install Git, then fully quit and reopen VSCode so it can find it, and try again.</p>
         </details>
         <details>
           <summary>I installed a plugin but the slash commands don't work</summary>
