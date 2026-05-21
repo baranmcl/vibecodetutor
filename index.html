@@ -703,6 +703,11 @@
             <p>Open <strong>Finder</strong>. In the top menu, click <strong>Go → Home</strong>. In the empty area, right-click and choose <strong>New Folder</strong>, name it <code>Code</code>, and press Enter. The full path will be <code>~/Code</code> (which expands to <code>/Users/&lt;your-name&gt;/Code</code>).</p>
           </div>
           <p>Now tell VSCode to use this folder by default when you clone a project from GitHub. In VSCode, press <strong><span class="platform-text" data-win="Ctrl" data-mac="⌘"></span>+,</strong> (comma) to open Settings. In the search bar, type <em>default clone directory</em>. Set the value to the path of your new Code folder.</p>
+          <div class="callout"><strong>Shortcut — let Claude do this step.</strong> You already have Claude Code working from Step 5, so instead of the manual steps above you can paste the prompt below into the Claude Code panel. Claude will create the <code>Code</code> folder and change the VSCode setting for you, then tell you the path.</div>
+          <div class="code-block">
+            <pre><code>Create a folder called Code in my home folder if it doesn't already exist, then set it as the default folder for cloning GitHub projects in my VS Code settings (the git.defaultCloneDirectory setting). Tell me the full path when you're done.</code></pre>
+            <button class="copy-btn">Copy</button>
+          </div>
           <label class="step-check"><input type="checkbox" class="task-check" data-id="install-code-folder"> Code folder created and set as VSCode default clone directory</label>
         </div>
       </div>
